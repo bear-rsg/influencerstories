@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static settings_value %}
+
+{% block main %}
+
+<section id="welcome-banner">
+    <div id="welcome-banner-title">
+        Influencer Stories of
+        <br>
+        Mental Health and Young People
+    </div>
+</section>
+
+{% include 'snippets/waves/wave1.html' %}
+
+<section class="lightbg">
+    <div class="container">
+        <h2>Welcome</h2>
+        <p>
+            Content here...
+        </p>
+    </div>
+</section>
+
+{% include 'snippets/waves/wave2.html' %}
+
+<section class="colorbg">
+</section>
+
+{% include 'snippets/waves/wave3.html' %}
+
+<section class="lightbg">
+    <div class="container">
+        <p>
+            More content here...
+        </p>
+    </div>
+</section>
+
+{% include 'snippets/waves/wave2.html' %}
+
+<section class="colorbg">
+</section>
+
+{% endblock %}

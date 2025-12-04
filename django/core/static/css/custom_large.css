@@ -1,0 +1,33 @@
+@media (min-width: 992px) {
+
+    /* ---------- Navigation ---------- */
+
+    nav.navbar {
+        min-height: 4.5rem;
+    }
+
+    .nav-link {
+        margin-left: 0.3em;
+        margin-right: 0.3em;
+        margin-top: 0.2em;
+    }
+
+    /* ---------- Main ---------- */
+
+    main {
+        min-height: calc(100vh - 4rem);
+    }
+
+    /* ---------- Welcome ---------- */
+
+    #welcome-banner {
+        padding: 2rem;
+        min-height: 75vh;
+    }
+
+    #welcome-banner-title {
+        font-size: 3.5em;
+        margin: 20vh auto 1.3em auto;
+    }
+
+}

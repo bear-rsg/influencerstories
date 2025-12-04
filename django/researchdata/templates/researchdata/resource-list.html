@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static settings_value %}
+
+{% block main %}
+
+<section class="colorbg">
+</section>
+
+{% include 'snippets/waves/wave-top.html' %}
+
+<section class="lightbg">
+    <div id="resourcelist" class="container">
+        <!-- Title -->
+        <h2>{{ page_subtitle }} Resources</h2>
+        <!-- Intro -->
+        <div id="resourcelist-introduction">
+            Brief intro paragraph...
+        </div>
+        <!-- List of Resources -->
+        <div id="resourcelist-list">
+            {% for resource in object_list %}
+                <div class="resourcelist-list-item" data-resourceid="{{ resource.id }}">
+                    <!-- Title -->
+                    <div class="resourcelist-list-item-title">
+                        {{ resource.title }}
+                    </div>
+                    <!-- Description -->
+                    <div class="resourcelist-list-item-description">
+                        {{ resource.description | safe | linebreaks }}
+                    </div>
+                    <!-- Links -->
+                    <div class="resourcelist-list-item-links">
+                        <!-- File -->
+                        {% if resource.file %}
+                            <a href="{{ resource.file.url }}" target="_blank">
+                                <i class="fa-solid fa-file-arrow-down"></i> Download File
+                            </a>
+                        {% endif %}
+                        <!-- Video -->
+                        {% if resource.video_youtube_id %}
+                            <a href="https://www.youtube.com/watch?v={{ resource.video_youtube_id }}" target="_blank">
+                                <i class="fa-brands fa-youtube"></i> View Video
+                            </a>
+                        {% endif %}
+                        <!-- Url -->
+                        {% if resource.url %}
+                            <a href="{{ resource.url }}" target="_blank">
+                                <i class="fa-solid fa-square-up-right"></i> Open Link
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <div>There are no Resources available to view. Please check back soon.</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% include 'snippets/waves/wave2.html' %}
+
+<section class="colorbg">
+</section>
+
+<!-- Resource feedback - appears in popup -->
+
+<div id="resourcelist-feedback">
+    <div id="resourcelist-feedback-content">
+        <div id="resourcelist-feedback-content-close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <label id="resourcelist-feedback-content-label" for="resourcelist-feedback-content-text">Please tell us how this resource has been helpful to you:</label>
+        <textarea id="resourcelist-feedback-content-text" placeholder="Write your feedback..."></textarea>
+        <button id="resourcelist-feedback-content-submit">
+            <i class="fa-solid fa-paper-plane"></i> Send
+        </button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var chosenResource;
+
+        // Open resource feedback popup and set chosen resource
+        $('.resourcelist-list-item-links a').on('click', function(){
+            $('#resourcelist-feedback').fadeIn();
+            chosenResource = $(this).closest('.resourcelist-list-item').attr('data-resourceid');
+        });
+
+        // Close resource feedback popup
+        $('#resourcelist-feedback-content-close').on('click', function(){
+            $('#resourcelist-feedback').fadeOut();
+        });
+
+        // Send resource feedback
+        $('#resourcelist-feedback-content-submit').on('click', function(){
+            $.ajax({
+                url: "{% url 'researchdata:resource-feedback-create' %}",
+                type: 'POST',
+                data: {
+                    resourceId: chosenResource,
+                    feedback: $('#resourcelist-feedback-content-text').val()
+                },
+                success: function(response){
+                    $('#resourcelist-feedback-content-close').trigger('click');
+                    $('#resourcelist-feedback-content-text').val('');
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    alert("Error. Your feedback could not be saved. Please email your feedback to us: {% settings_value 'ADMIN_EMAIL' %}")
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

@@ -5,6 +5,7 @@ venv/
 private/
 *.sqlite3
 django/media/
+django/general/migrations/
 django/static/
 node_modules/
 accessibility_reports/

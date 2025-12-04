@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static settings_value %}
+
+{% block main %}
+
+<section class="colorbg">
+</section>
+
+{% include 'snippets/waves/wave-top.html' %}
+
+<section class="lightbg">
+    <div class="container">
+        <h2>About the Project</h2>
+        <p>
+            The Influencer Stories project is a two year collaboration between researchers at the University of Birmingham, Aston University and the University of Nottingham, funded by the ESRC (2024-2026).
+        </p>
+        <p>
+            The project explores how stories told by social media influencers (‘influencers’) can help young people or put them at risk as they gain awareness of, and respond to, challenges in mental health.
+        </p>
+        <p>
+            Knowing how to find and evaluate information about mental health is critical for young people, especially in the context of social media where there is a wealth of easily accessible information which varies in quality.
+        </p>
+        <p>
+            Young people and their needs are at the heart of the project. Throughout, we worked with our partners at <a href="https://mcpin.org/" target="_blank">The McPin Foundation</a> and a Young People’s Advisory Group of 12 young people, aged 16-25 who have lived experience of mental health issues.
+        </p>
+        <p>
+            We also worked with a range of charities throughout this project, including <a href="https://www.careforthefamily.org.uk/" target="_blank">Care for the Family</a>.
+        </p>
+        <div id="about-partners">
+            <img src="{% static 'images/about/partners/esrc.jpg' %}" alt="ESRC">
+            <img src="{% static 'images/about/partners/birmingham.jpg' %}" alt="University of Birmingham">
+            <img src="{% static 'images/about/partners/aston.jpg' %}" alt="Aston University">
+            <img src="{% static 'images/about/partners/nottingham.jpg' %}" alt="University of Nottingham">
+            <img src="{% static 'images/about/partners/mcpinfoundation.jpg' %}" alt="McPin Foundation">
+            <img src="{% static 'images/about/partners/careforthefamily.jpg' %}" alt="Care for the Family">
+        </div>
+    </div>
+</section>
+
+<section class="lightbg">
+    <div class="container">
+        <h2>About the Research</h2>
+        <img id="about-threetypesofinlfuencer" src="{% static 'images/about/three-types-of-influencer.png' %}" alt="Three types of influencer">
+        <p>
+            Through the project we have explored how different influencers talk about mental health through short videos on TikTok: mental health professionals, wellness practitioners and people with lived experience of mental health issues.
+        </p>
+        <p>
+            We held focus groups and interviews to find out how young people engaged with the content from different influencers.
+        </p>
+        <p>
+            We evaluated a selection of videos with two expert panels: Mental Health Professionals and Experts by Lived Experience.
+        </p>
+    </div>
+</section>
+
+<section class="lightbg">
+    <div class="container">
+        <h2>About the Team</h2>
+        
+        <!-- Ruth -->
+        <div class="about-team-name">
+            Professor Ruth Page
+        </div>
+        <img src="{% static 'images/about/team/ruth.jpg' %}" alt="Professor Ruth Page" class="about-team-photo">
+        <p>
+            Professor Ruth Page works in the Department of Linguistics and Communication at the University of Birmingham. Her research explores how people tell stories in different social media sites and platforms. She uses mediated narrative analysis that combine multimodal and corpus-linguistic approaches to analyse data from a range of contexts.
+        </p>
+
+        <!-- Michael -->
+        <div class="about-team-name">
+            Professor Michael Larkin
+        </div>
+        <img src="{% static 'images/about/team/michael.jpg' %}" alt="Professor Michael Larkin" class="about-team-photo">
+        <p>
+            Professor Michael Larkin is interested in how people make sense of - and cope with - difficult or distressing experiences. His work draws on applied psychology, phenomenology, philosophy of science, implementation and intervention science, meta-synthesis, and co-design.
+        </p>
+
+        <!-- Paul -->
+        <div class="about-team-name">
+            Professor Paul Crawford
+        </div>
+        <img src="{% static 'images/about/team/paul.jpg' %}" alt="Professor Paul Crawford" class="about-team-photo">
+        <p>
+            Professor Paul Crawford is the founder of the global, interdisciplinary field of health humanities. He directs the Centre for Social Futures at the Institute of Mental Health, The University of Nottingham and recently led the award-winning What’s Up With Everyone series of animations with Aardman supporting young people’s mental health.
+        </p>
+
+        <!-- Alex -->
+        <div class="about-team-name">
+            Dr Alex Christiansen
+        </div>
+        <img src="{% static 'images/about/team/alex.jpg' %}" alt="Dr Alex Christiansen" class="about-team-photo">
+        <p>
+            Dr Alex Christiansen is a Research Fellow in the Department of Linguistics and Communication at the University of Birmingham. His research develops innovative linguistic methods to tackle real-world issues, with a particular focus on mis- and disinformation and online hate speech. He is interested in interdisciplinary approaches to understanding how language shapes social behaviour, and in creating tools that support safer and more informed online environments.
+        </p>
+
+        <!-- Shioma-Lei -->
+        <div class="about-team-name">
+            Dr Shioma-Lei Craythorne
+        </div>
+        <img src="{% static 'images/about/team/shioma.jpg' %}" alt="Dr Shioma-Lei Craythorne" class="about-team-photo">
+        <p>
+            Dr Shioma-Lei Craythorne is a Research Fellow in Psychology based in the Institute of Health and Neurodevelopment, Aston University. Her primary research interests include youth mental health, the experience of living with body image disturbances (such as body dysmorphic disorder) and using co-production within research contexts. She enjoys using phenomenological and creative methods in her research, as they can often help people to express difficult emotions.
+        </p>
+
+        <!-- Emma -->
+        <div class="about-team-name">
+            Emma Garavini
+        </div>
+        <img src="{% static 'images/about/team/emma.jpg' %}" alt="Emma Garavini" class="about-team-photo">
+        <p>
+            Emma Garavini is a Senior Youth Involvement Officer at the mental health research charity, the McPin Foundation. McPin exists to transform mental health research by involving people with lived experience of mental health issues to shape and inform the research and ensure it is relevant and meaningful for those that the research intends to impact, people with mental health issues.
+        </p>
+
+        <!-- Evangelina -->
+        <div class="about-team-name">
+            Evangelina Asiedu-Addo
+        </div>
+        <img src="{% static 'images/about/team/eva.jpg' %}" alt="Evangelina Asiedu-Addo" class="about-team-photo">
+        <p>
+            Evangelina Asiedu-Addo is a Peer Researcher and Public Involvement Officer at the McPin Foundation. She is passionate about young people’s mental health and early intervention. In this project, Eva supports young people’s involvement by co-facilitating the Young People’s Advisory Group meetings, using engaging methods to encourage participation and supporting the wider project team. She brings her own lived experience of being a young person who has grown up with social media.
+        </p>
+    </div>
+</section>
+
+{% include 'snippets/waves/wave2.html' %}
+
+<section class="colorbg">
+</section>
+
+{% endblock %}
