@@ -72,22 +72,20 @@
                             Stories
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle{% if "/resources/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkAbout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Resources
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAbout">
-                            <a class="dropdown-item" href="{% url 'researchdata:resource-education-list' %}">
-                                Education
+                    {% if resource_strands %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle{% if "/resources/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkAbout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Resources
                             </a>
-                            <a class="dropdown-item" href="{% url 'researchdata:resource-policy-list' %}">
-                                Policy
-                            </a>
-                            <a class="dropdown-item" href="{% url 'researchdata:resource-mensmentalhealth-list' %}">
-                                Men's Mental Health
-                            </a>
-                        </div>
-                    </li>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAbout">
+                                {% for resource_strand in resource_strands %}
+                                    <a class="dropdown-item" href="{{ resource_strand.get_absolute_url }}">
+                                        {{ resource_strand.navigation_link_name }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="https://blog.bham.ac.uk/influencerstories" target="_blank">
                             Blog

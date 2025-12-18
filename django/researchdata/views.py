@@ -2,7 +2,6 @@ from django.views.generic import ListView, DetailView
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from . import models
-import json
 
 
 class StoryListView(ListView):
@@ -26,64 +25,20 @@ class StoryDetailView(DetailView):
     queryset = models.Story.objects.filter(published=True)
 
 
-class ResourceEducationListView(ListView):
+class ResourceStrandDetailView(DetailView):
     """
-    Class-based view to show the Resource (Education) list template
+    Class-based view to show the Resource Strand detail template
     """
-    template_name = 'researchdata/resource-list.html'
-
-    def get_queryset(self):
-        queryset = models.Resource.objects.filter(
-            strand__name__iexact='education',
-            published=True
-        )
-        return queryset
+    template_name = 'researchdata/resourcestrand-detail.html'
+    queryset = models.ResourceStrand.objects.filter(published=True).prefetch_related('resources')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_subtitle'] = 'Education'
+        context['resources'] = self.object.resources.filter(published=True)
         return context
 
 
-class ResourcePolicyListView(ListView):
-    """
-    Class-based view to show the Resource (Policy) list template
-    """
-    template_name = 'researchdata/resource-list.html'
-
-    def get_queryset(self):
-        queryset = models.Resource.objects.filter(
-            strand__name__iexact='policy',
-            published=True
-        )
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page_subtitle'] = 'Policy'
-        return context
-
-
-class ResourceMensMentalHealthListView(ListView):
-    """
-    Class-based view to show the Resource (Men's Mental Health) list template
-    """
-    template_name = 'researchdata/resource-list.html'
-
-    def get_queryset(self):
-        queryset = models.Resource.objects.filter(
-            strand__name__iexact="men's mental health",
-            published=True
-        )
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page_subtitle'] = "Men's Mental Health"
-        return context
-
-
-@csrf_exempt 
+@csrf_exempt
 def resource_feedback_create(request):
     if request.method == 'POST':
         resource_id = request.POST.get('resourceId')

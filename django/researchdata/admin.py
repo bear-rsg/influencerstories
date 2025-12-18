@@ -78,8 +78,16 @@ class ResourceStrandAdminView(admin.ModelAdmin):
     Customise the admin interface for ResourceFeedback model
     """
 
-    list_display = ('name', 'created', 'last_updated')
+    list_display = (
+        'name',
+        'published',
+        'slug',
+        'created',
+        'last_updated'
+    )
     search_fields = ('name',)
+    exclude = ('slug',)
+    actions = (publish, unpublish)
 
     def get_actions(self, request):
         """
@@ -138,6 +146,25 @@ class ResourceFeedbackAdminView(admin.ModelAdmin):
     list_display = ('feedback', 'resource', 'created', 'last_updated')
     search_fields = ('resource__title', 'feedback')
     list_filter = ('resource',)
+
+    def get_actions(self, request):
+        """
+        Remove 'delete' action
+        """
+        actions = super().get_actions(request)
+        if 'delete_selected' in actions:
+            del actions['delete_selected']
+        return actions
+
+
+@admin.register(models.FileUpload)
+class FileUploadAdminView(admin.ModelAdmin):
+    """
+    Customise the admin interface for FileUpload model
+    """
+
+    list_display = ('id', 'file', 'url', 'created')
+    search_fields = ('file',)
 
     def get_actions(self, request):
         """

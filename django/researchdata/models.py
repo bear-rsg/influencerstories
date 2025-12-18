@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.db.models.functions import Upper
+from django.utils.text import slugify
 
 
 class StoryGroup(models.Model):
@@ -39,7 +40,7 @@ class Story(models.Model):
     )
     author_name = models.CharField(max_length=200, blank=True, null=True)
     author_name_show = models.BooleanField(default=True, help_text="Ticking this box will show the author's name on the public interface")
-    published = models.BooleanField(default=True, verbose_name='published', help_text='Only published stories will appear on the public interface')
+    published = models.BooleanField(default=True, help_text='Only published stories will appear on the public interface')
     admin_notes = models.TextField(blank=True, null=True, help_text='Optional. Used for internal notes. Only visible on this page and will not appear on public website.')
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
@@ -63,11 +64,24 @@ class ResourceStrand(models.Model):
     related_name = 'resource_strands'
 
     name = models.CharField(max_length=255, unique=True)
+    navigation_link_name = models.CharField(max_length=255, unique=True)
+    navigation_link_order = models.IntegerField(default=0)
+    introduction = models.TextField(blank=True, null=True)
+    slug = models.SlugField(unique=True, blank=True)
+    published = models.BooleanField(default=True, help_text='Only published resource strands will appear on the public interface')
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
+    def get_absolute_url(self):
+        return reverse('researchdata:resourcestrand-detail', args=[str(self.slug)])
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.navigation_link_name)
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return self.name
+        return self.navigation_link_name
 
 
 class Resource(models.Model):
@@ -89,16 +103,14 @@ class Resource(models.Model):
         help_text="This can be found in the video URL. E.g. 'daUQPN5A2zA' in 'www.youtube.com/watch?v=daUQPN5A2zA'"
     )
     url = models.URLField(blank=True, null=True)
-    published = models.BooleanField(default=True, verbose_name='published', help_text='Only published resources will appear on the public interface')
+    request_feedback = models.BooleanField(default=False, help_text='Check to display feedback box from users for this resource')
+    published = models.BooleanField(default=True, help_text='Only published resources will appear on the public interface')
     admin_notes = models.TextField(blank=True, null=True, help_text='Optional. Used for internal notes. Only visible on this page and will not appear on public website.')
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('researchdata:resource-detail', args=[str(self.id)])
 
     class Meta:
         ordering = [Upper('title'), 'id']
@@ -122,3 +134,20 @@ class ResourceFeedback(models.Model):
 
     class Meta:
         verbose_name_plural = 'resource feedback'
+
+
+class FileUpload(models.Model):
+    """
+    A file (e.g. image, pdf) uploaded so can be used somewhere on the website
+    """
+
+    file = models.FileField(upload_to='researchdata-files')
+    admin_notes = models.TextField(blank=True, null=True, help_text='Optional. Used for internal notes. Only visible on this page and will not appear on public website.')
+    created = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def url(self):
+        return self.file.url
+
+    def __str__(self):
+        return f'File: #{self.id}'
