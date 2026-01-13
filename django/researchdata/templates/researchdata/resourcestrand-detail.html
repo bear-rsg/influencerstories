@@ -3,10 +3,7 @@
 
 {% block main %}
 
-<section class="colorbg">
-</section>
-
-{% include 'snippets/waves/wave-top.html' %}
+<section class="colorbg"></section>
 
 <section class="lightbg">
     <div id="resourcelist" class="container">
@@ -58,17 +55,12 @@
                         </div>
                     {% endif %}
                 </div>
-            {% empty %}
-                <div>There are no Resources available to view. Please check back soon.</div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-{% include 'snippets/waves/wave2.html' %}
-
-<section class="colorbg">
-</section>
+<section class="colorbg"></section>
 
 <script>
     $(document).ready(function(){
