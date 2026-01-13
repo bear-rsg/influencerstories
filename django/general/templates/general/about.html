@@ -3,10 +3,7 @@
 
 {% block main %}
 
-<section class="colorbg">
-</section>
-
-{% include 'snippets/waves/wave-top.html' %}
+<section class="colorbg"></section>
 
 <section class="lightbg">
     <div class="container">
@@ -26,14 +23,6 @@
         <p>
             We also worked with a range of charities throughout this project, including <a href="https://www.careforthefamily.org.uk/" target="_blank">Care for the Family</a>.
         </p>
-        <div id="about-partners">
-            <img src="{% static 'images/about/partners/esrc.jpg' %}" alt="ESRC">
-            <img src="{% static 'images/about/partners/birmingham.jpg' %}" alt="University of Birmingham">
-            <img src="{% static 'images/about/partners/aston.jpg' %}" alt="Aston University">
-            <img src="{% static 'images/about/partners/nottingham.jpg' %}" alt="University of Nottingham">
-            <img src="{% static 'images/about/partners/mcpinfoundation.jpg' %}" alt="McPin Foundation">
-            <img src="{% static 'images/about/partners/careforthefamily.jpg' %}" alt="Care for the Family">
-        </div>
     </div>
 </section>
 
@@ -122,9 +111,21 @@
     </div>
 </section>
 
-{% include 'snippets/waves/wave2.html' %}
 
-<section class="colorbg">
+<section class="lightbg">
+    <div class="container">
+        <h2>Project Partners</h2>
+        <div id="about-partners">
+            <img src="{% static 'images/about/partners/esrc.jpg' %}" alt="ESRC">
+            <img src="{% static 'images/about/partners/birmingham.jpg' %}" alt="University of Birmingham">
+            <img src="{% static 'images/about/partners/aston.jpg' %}" alt="Aston University">
+            <img src="{% static 'images/about/partners/nottingham.jpg' %}" alt="University of Nottingham">
+            <img src="{% static 'images/about/partners/mcpinfoundation.jpg' %}" alt="McPin Foundation">
+            <img src="{% static 'images/about/partners/careforthefamily.jpg' %}" alt="Care for the Family">
+        </div>
+    </div>
 </section>
+
+<section class="colorbg"></section>
 
 {% endblock %}

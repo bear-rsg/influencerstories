@@ -11,8 +11,6 @@
     </div>
 </section>
 
-{% include 'snippets/waves/wave1.html' %}
-
 <section class="lightbg">
     <div class="container">
         <h2>Welcome!</h2>
@@ -28,12 +26,13 @@
             On this website, you can:
         </p>
         <ul>
-            <li>Find out more about our research and our research team</li>
-            <li>Listen to the key insights from our research, shared by members of our young people’s advisory group</li>
-            <li>Access academic papers produced from the project.</li>
-            <li>Make use of the free resources we developed for policy makers and educators.</li>
-            <li>Browse our Story Collector archive, where young people shared stories and tips about positive mental health and wellbeing.</li>
-            <li>Find out more about the connections between mental health and fitness by listening to the content created by leading Clinician Creators in conversation with Sports Coaches from the University of Birmingham.</li>
+            <li>Find out more <a href="{% url 'general:about' %}">about our research and our research team</a></li>
+            <li>Listen to the <a href="{% url 'general:insights' %}">key insights from our research</a>, shared by members of our young people’s advisory group</li>
+            <li>Access <a href="{% url 'researchdata:resourcestrand-detail' slug='academic-papers' %}">academic papers</a> produced from the project.</li>
+            <li>Make use of the free resources we developed for <a href="{% url 'researchdata:resourcestrand-detail' slug='policy' %}">policy makers</a> and <a href="{% url 'researchdata:resourcestrand-detail' slug='education' %}">educators</a>.</li>
+            <li>Watch the videos and download <a href="{% url 'researchdata:resourcestrand-detail' slug='parents-and-carers' %}">resources for parents and carers</a></li>
+            <li>Browse our <a href="{% url 'researchdata:story-list' %}">Story Collector archive</a>, where young people shared stories and tips about positive mental health and wellbeing.</li>
+            <li>Find out more about the connections between mental health and fitness by <a href="{% url 'researchdata:resourcestrand-detail' slug='mens-mental-health' %}">listening to the content created by leading Clinician Creators in conversation with Sports Coaches from the University of Birmingham</a>.</li>
         </ul>
         <p>
             We hope you find our materials useful.
@@ -41,9 +40,6 @@
     </div>
 </section>
 
-{% include 'snippets/waves/wave2.html' %}
-
-<section class="colorbg">
-</section>
+<section class="colorbg"></section>
 
 {% endblock %}
