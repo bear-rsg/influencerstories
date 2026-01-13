@@ -22,12 +22,12 @@
 
     #welcome-banner {
         padding: 2rem;
-        min-height: 75vh;
+        min-height: 15vh;
     }
 
     #welcome-banner-title {
         font-size: 3.5em;
-        margin: 20vh auto 1.3em auto;
+        margin: 13vh auto 3em auto;
     }
 
 }
