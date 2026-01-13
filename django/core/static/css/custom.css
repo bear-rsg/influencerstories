@@ -45,7 +45,7 @@ h1 {
 h2 {
     display: block;
     font-size: 1.8em;
-    margin: 1.2em auto 0.8em auto;
+    margin: 1.2em auto 1em auto;
     font-weight: 900;
     background: var(--color-primary);
     color: white;
@@ -111,9 +111,9 @@ td.align-right {
     text-align: right;
 }
 
-p {
-    margin: 0.5em 0;
-    line-height: 1.7em;
+p,
+li {
+    line-height: 1.5em;
 }
 
 select {
@@ -175,7 +175,7 @@ i.icon {
     padding-bottom: 56.25%; /* 16:9 */
     padding-top: 0;
     height: 0;
-    margin: 7em auto;
+    margin: 3em auto;
 }
 
 .video-container iframe {
@@ -212,8 +212,8 @@ i.icon {
 /* ---------- Waves ---------- */
 
 #wavetop {
-    margin-top: -69vh;
-    margin-bottom: -50px;
+    margin-top: -60vh;
+    margin-bottom: -30px;
 }
 
 #wavefooter {
@@ -387,23 +387,22 @@ main {
 }
 
 main section {
-    padding: 1rem 0;
+    padding: 0.1rem 0;
 }
 
 main section.lightbg {
     background-color: white;
-    min-height: 60vh;
 }
 
 main section.colorbg {
-    min-height: 60vh;
+    min-height: 50vh;
 }
 
 main section p,
 main section ul,
 main section ol {
     font-size: 1.2em;
-    margin: 2em 0;
+    margin: 1em 0;
 }
 
 /* ---------- Welcome ---------- */
