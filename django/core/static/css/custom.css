@@ -178,6 +178,7 @@ i.icon {
 .video-container iframe {
     height: 20em;
     width: 30em;
+    max-width: 100%;
 }
 
 .pdf-viewer-full {
