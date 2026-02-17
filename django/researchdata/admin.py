@@ -38,6 +38,16 @@ class StoryGroupAdminView(admin.ModelAdmin):
     search_fields = ('name',)
 
 
+@admin.register(models.StoryType)
+class StoryTypeAdminView(admin.ModelAdmin):
+    """
+    Customise the admin interface for StoryType model
+    """
+
+    list_display = ('name',)
+    search_fields = ('name',)
+
+
 @admin.register(models.Story)
 class StoryAdminView(admin.ModelAdmin):
     """
@@ -46,6 +56,8 @@ class StoryAdminView(admin.ModelAdmin):
 
     list_display = (
         'title',
+        'type',
+        'group',
         'author_name',
         'published',
         'created',

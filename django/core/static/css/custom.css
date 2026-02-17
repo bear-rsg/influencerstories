@@ -445,6 +445,7 @@ main section ol {
 .storylist-list-item {
     display: inline-block;
     position: relative;
+    vertical-align: top;
     height: 15em;
     width: 20.7em;
     color: white;

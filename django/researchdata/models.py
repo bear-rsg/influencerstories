@@ -6,10 +6,26 @@ from django.utils.text import slugify
 
 class StoryGroup(models.Model):
     """
-    A group/category of a Story
+    A group/category/theme of a Story
     """
 
     related_name = 'story_groups'
+
+    name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = [Upper('name'), 'id']
+
+
+class StoryType(models.Model):
+    """
+    A type of a Story (e.g. poem, video)
+    """
+
+    related_name = 'story_types'
 
     name = models.CharField(max_length=255, unique=True)
 
@@ -29,8 +45,13 @@ class Story(models.Model):
 
     title = models.CharField(max_length=255, unique=True)
     group = models.ForeignKey(StoryGroup, related_name=related_name, on_delete=models.RESTRICT)
+    type = models.ForeignKey(StoryType, related_name=related_name, on_delete=models.SET_NULL, blank=True, null=True)
     text = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='researchdata-stories', blank=True, null=True)
+    image_show = models.BooleanField(
+        default=True,
+        help_text="Ticking this box will show the image at the top of the story, unticking will hide it. The image will always be shown as the thumbnail in the list of stories"
+    )
     video_youtube_id = models.CharField(
         max_length=20,
         blank=True,

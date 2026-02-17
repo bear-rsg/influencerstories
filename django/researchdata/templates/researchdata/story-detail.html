@@ -10,7 +10,7 @@
         <!-- Title -->
         <h2>{{ object }}</h2>
         <!-- Image -->
-        {% if object.image %}
+        {% if object.image and object.image_show %}
             <div id="storydetail-image">
                 <img src="{{ object.image.url }}" alt="Story image">
             </div>
