@@ -10,7 +10,7 @@
         <h2>Stories</h2>
         <!-- Intro -->
         <div id="storylist-introduction">
-            Coming soon...
+            We're currently working on the Stories. Please check back soon!
         </div>
         <!-- List of Story Group links -->
         <h3>Explore our stories by group</h3>
@@ -26,7 +26,9 @@
                     <h3 id="storygroup-{{ story.group.id }}">{{ story.group }}</h3>
                 {% endifchanged %}
                 <a href="{% url 'researchdata:story-detail' story.id %}" class="storylist-list-item" style="background-image: url({% if story.image %}{{ story.image.url }}{% else %}{% static 'images/stories/default_story.jpg' %}{% endif %}); background-size: cover; background-repeat: no-repeat; background-position: center;">
-                    <div class="storylist-list-item-label">Story</div>
+                    {% if story.type %}
+                        <div class="storylist-list-item-label">{{ story.type }}</div>
+                    {% endif %}
                     <div class="storylist-list-item-title">{{ story }}</div>
                 </a>
             {% empty %}
