@@ -13,7 +13,7 @@ class StoryListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['storygroups'] = models.StoryGroup.objects.all()
+        context['storygroups'] = models.StoryGroup.objects.filter(stories__isnull=False).distinct()
         return context
 
 
