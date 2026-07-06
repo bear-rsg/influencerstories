@@ -331,6 +331,11 @@ nav.navbar {
     color: white;
 }
 
+.dropdown-toggle {
+    background: white;
+    color: var(--color-primary);
+}
+
 .dropdown-menu {
     background: white;
     color: var(--color-primary);

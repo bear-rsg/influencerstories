@@ -74,10 +74,10 @@
                     </li>
                     {% if resource_strands %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle{% if "/resources/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkAbout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle{% if "/resources/" in request.path %} active{% endif %}" href="#" id="navbarDropdownMenuLinkResources" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Resources
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkAbout">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkResources">
                                 {% for resource_strand in resource_strands %}
                                     <a class="dropdown-item" href="{{ resource_strand.get_absolute_url }}">
                                         {{ resource_strand.navigation_link_name }}
