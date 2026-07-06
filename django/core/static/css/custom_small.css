@@ -55,6 +55,7 @@
     }
 
     .navbar-toggler {
+        background: white;
         color: var(--color-primary);
         font-size: 1.7em;
         padding-right: 0.35em;
