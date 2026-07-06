@@ -289,8 +289,8 @@ button[type='submit']:hover {
 /* ---------- Navigation ---------- */
 
 nav.navbar {
-    background: rgba(255, 255, 255, 0.95);
     vertical-align: middle;
+    background: white;
     color: var(--color-primary);
     z-index: 950;
     border-radius: 2em;
@@ -304,11 +304,14 @@ nav.navbar {
 .navbar-brand {
     display: inline-block;
     font-size: 1rem;
+    background: white;
+    color: var(--color-primary);
 }
 
 .nav-link {
     font-weight: 600;
     font-size: 1.2rem;
+    background: white;
     color: #303030;
     padding: 0.5em 0.8em !important;
     padding-left: 0.8em;
@@ -318,6 +321,7 @@ nav.navbar {
 
 .nav-link.active,
 .nav-link:hover {
+    background: white;
     color: var(--color-primary);
     opacity: 1;
 }
@@ -327,8 +331,14 @@ nav.navbar {
     color: white;
 }
 
+.dropdown-toggle {
+    background: white;
+    color: var(--color-primary);
+}
+
 .dropdown-menu {
     background: white;
+    color: var(--color-primary);
     font-size: 1.09em;
 }
 

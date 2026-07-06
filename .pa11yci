@@ -1,0 +1,12 @@
+{
+    "defaults": {
+        "runners": ["axe", "htmlcs"],
+        "hideElements": ".dropdown-toggle",
+        "chromeLaunchConfig": {
+            "args": ["--no-sandbox"]
+        }
+    },
+    "urls": [
+        "http://localhost:8000/cookies/"
+    ]
+}
