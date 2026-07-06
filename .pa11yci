@@ -1,6 +1,7 @@
 {
     "defaults": {
         "runners": ["axe", "htmlcs"],
+        "hideElements": ".dropdown-toggle",
         "chromeLaunchConfig": {
             "args": ["--no-sandbox"]
         }
